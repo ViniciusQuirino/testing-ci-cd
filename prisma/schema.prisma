@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String     @id @default(uuid())
+  name         String     @db.VarChar(60)
+  cpf          String     @unique @db.VarChar(11)
+  email        String     @unique @db.VarChar(60)
+  password     String     @db.VarChar(127)
+  phone_number String     @unique @db.VarChar(11)
+  description  String?    @db.VarChar(255)
+  birth_date   DateTime   @db.Date
+  image_url    String?    @db.VarChar(255)
+  is_adm       Boolean    @default(false)
+  is_seller    Boolean
+  is_active    Boolean    @default(true)
+  address      Address?
+  cars         Car[]
+  comments     Comments[]
+}
+
+model Address {
+  id          String  @id @default(uuid())
+  street      String  @db.VarChar(127)
+  number      String  @db.VarChar(60)
+  complement  String? @db.VarChar(60)
+  zip_code    String  @db.VarChar(8)
+  city        String  @db.VarChar(60)
+  state       String  @db.VarChar(60)
+  description String  @db.VarChar(60)
+  user        User    @relation(fields: [user_id], references: [id])
+  user_id     String  @unique
+}
+
+model Comments {
+  id          String @id @default(uuid())
+  description String @db.VarChar(255)
+  user        User   @relation(fields: [user_id], references: [id])
+  user_id     String @unique
+  car         Car    @relation(fields: [car_id], references: [id])
+  car_id      String @unique
+}
+
+model Car {
+  id          String     @id @default(uuid())
+  brand       String     @db.VarChar(60)
+  model       String     @db.VarChar(60)
+  launch_year DateTime   @db.Date
+  car_color   String     @db.VarChar(8)
+  fuel        Int
+  fuel_type   String     @db.VarChar(60)
+  km          Float
+  price       Float
+  description String     @db.VarChar(255)
+  is_active   Boolean    @default(true)
+  sold        Boolean    @default(false)
+  user        User       @relation(fields: [user_id], references: [id])
+  user_id     String     @unique
+  comments    Comments[]
+  images      Image[]
+}
+
+model Image {
+  id          String  @id @default(uuid())
+  main_image  String  @db.VarChar(255)
+  image_one   String  @db.VarChar(255)
+  image_two   String  @db.VarChar(255)
+  image_three String  @db.VarChar(255)
+  image_four  String? @db.VarChar(255)
+  image_five  String? @db.VarChar(255)
+  car         Car     @relation(fields: [car_id], references: [id])
+  car_id      String  @unique
+}
