@@ -6,9 +6,9 @@ import users from "./routes/users.routes";
 
 const app = express();
 
-app.use("/users", users)
-
 app.use(express.json());
+
+app.use("/users", users);
 
 app.use(handleErrorMiddleware);
 
