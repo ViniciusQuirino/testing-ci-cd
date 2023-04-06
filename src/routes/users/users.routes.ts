@@ -7,6 +7,8 @@ import { ensureIsAdminMiddleware } from "../../middlewares/ensureIsAdmin.middlew
 import { ensureAuthMiddleware } from "../../middlewares/ensureAuth.middleware";
 import { ensureUniqueFieldsMiddleware } from "../../middlewares/ensureUniqueFields.middleware";
 import { retrieveUserController } from "../../controllers/users/retrieveUser.controller";
+import { ensureIsAdminOrAccountOwnerMiddleware } from "../../middlewares/ensureIsAdminOrAccountOwner.middleware";
+import { deleteUserController } from "../../controllers/users/deleteUser.controller";
 
 const userRoutes = express.Router();
 
@@ -18,5 +20,11 @@ userRoutes.post(
 );
 userRoutes.get("", ensureAuthMiddleware, retrieveUserController);
 userRoutes.get("/all", ensureAuthMiddleware, ensureIsAdminMiddleware, listUsersController);
+userRoutes.delete(
+	"",
+	ensureAuthMiddleware,
+	ensureIsAdminOrAccountOwnerMiddleware,
+	deleteUserController
+);
 
 export default userRoutes;
