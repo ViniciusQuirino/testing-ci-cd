@@ -1,7 +1,10 @@
-import { Router } from "express";
+import express from "express";
+import { createUserController } from "../../controllers/users/createUser.controller";
+import { createSessionController } from "../../controllers/session/createSession.controller";
 
-const userRoutes = Router();
+const userRoutes = express.Router();
 
-userRoutes.post("/", (req, res) => {});
+userRoutes.post("", createUserController);
+userRoutes.post("/session", createSessionController);
 
-export default users;
+export default userRoutes;
