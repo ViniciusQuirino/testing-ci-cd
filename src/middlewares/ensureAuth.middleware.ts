@@ -3,7 +3,10 @@ import { AppError } from "../errors/appError";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 import { prisma } from "../prisma";
-import { userWithAddressResponseSerializer } from "../serializers/users/user.serializer";
+import {
+	userResponseSerializer,
+	userWithAddressResponseSerializer,
+} from "../serializers/users/user.serializer";
 
 export const ensureAuthMiddleware = async (req: Request, res: Response, next: NextFunction) => {
 	let token = req.headers.authorization;
@@ -29,7 +32,7 @@ export const ensureAuthMiddleware = async (req: Request, res: Response, next: Ne
 			throw new AppError("Invalid token", 401);
 		}
 
-		const filteredUser = await userWithAddressResponseSerializer.validate(user, {
+		const filteredUser = await userResponseSerializer.validate(user, {
 			stripUnknown: true,
 		});
 
