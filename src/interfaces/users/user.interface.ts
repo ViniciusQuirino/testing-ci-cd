@@ -32,6 +32,7 @@ export interface IUserUpdateRequest {
 }
 
 export interface IUserWithAddressResponse {
+	id: string;
 	name: string;
 	cpf: string;
 	email: string;
@@ -45,6 +46,7 @@ export interface IUserWithAddressResponse {
 }
 
 export interface IUserResponse {
+	id: string;
 	name: string;
 	cpf: string;
 	email: string;

@@ -29,6 +29,7 @@ export const userCreateRequestSerializer: SchemaOf<IUserCreateRequest> = yup.obj
 export const userWithAddressResponseSerializer: SchemaOf<IUserWithAddressResponse> = yup
 	.object()
 	.shape({
+		id: yup.string().required(),
 		name: yup.string().required(),
 		email: yup.string().email().required(),
 		cpf: yup.string().required(),
@@ -54,6 +55,7 @@ export const listUsersResponseSerializer: SchemaOf<IUserWithAddressResponse[]> =
 );
 
 export const userResponseSerializer: SchemaOf<IUserResponse> = yup.object().shape({
+	id: yup.string().required(),
 	name: yup.string().required(),
 	email: yup.string().email().required(),
 	cpf: yup.string().required(),
