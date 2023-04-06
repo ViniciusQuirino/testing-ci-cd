@@ -10,7 +10,7 @@ import { retrieveUserController } from "../../controllers/users/retrieveUser.con
 import { ensureIsAdminOrAccountOwnerMiddleware } from "../../middlewares/ensureIsAdminOrAccountOwner.middleware";
 import { deleteUserController } from "../../controllers/users/deleteUser.controller";
 
-const userRoutes = express.Router();
+export const userRoutes = express.Router();
 
 userRoutes.post(
 	"",
@@ -26,5 +26,3 @@ userRoutes.delete(
 	ensureIsAdminOrAccountOwnerMiddleware,
 	deleteUserController
 );
-
-export default userRoutes;
