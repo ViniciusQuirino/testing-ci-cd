@@ -40,6 +40,7 @@ export interface IUserWithAddressResponse {
 	birth_date: Date;
 	image_url: string;
 	is_seller: boolean;
+	is_adm: boolean;
 	address: IAddressCreateRequest;
 }
 
@@ -52,4 +53,5 @@ export interface IUserResponse {
 	birth_date: Date;
 	image_url: string;
 	is_seller: boolean;
+	is_adm: boolean;
 }
