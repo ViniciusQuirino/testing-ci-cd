@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { AnySchema } from "yup";
 
-const ensureDataIsValidMiddleware =
+export const ensureDataIsValidMiddleware =
 	(schema: AnySchema) => async (req: Request, res: Response, next: NextFunction) => {
 		try {
 			const validatedData = await schema.validate(req.body, {
@@ -16,5 +16,3 @@ const ensureDataIsValidMiddleware =
 			});
 		}
 	};
-
-export default ensureDataIsValidMiddleware;
