@@ -6,6 +6,7 @@ import { userCreateRequestSerializer } from "../../serializers/users/user.serial
 import { ensureIsAdminMiddleware } from "../../middlewares/ensureIsAdmin.middleware";
 import { ensureAuthMiddleware } from "../../middlewares/ensureAuth.middleware";
 import { ensureUniqueFieldsMiddleware } from "../../middlewares/ensureUniqueFields.middleware";
+import { retrieveUserController } from "../../controllers/users/retrieveUser.controller";
 
 const userRoutes = express.Router();
 
@@ -15,6 +16,7 @@ userRoutes.post(
 	ensureUniqueFieldsMiddleware,
 	createUserController
 );
+userRoutes.get("", ensureAuthMiddleware, retrieveUserController);
 userRoutes.get("/all", ensureAuthMiddleware, ensureIsAdminMiddleware, listUsersController);
 
 export default userRoutes;
