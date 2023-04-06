@@ -40,6 +40,7 @@ export const userWithAddressResponseSerializer: SchemaOf<IUserWithAddressRespons
 		is_seller: yup.boolean().required(),
 		is_adm: yup.boolean().required(),
 		address: yup.object().shape({
+			id: yup.string().required(),
 			street: yup.string().required(),
 			number: yup.string().required(),
 			complement: yup.string().required(),
