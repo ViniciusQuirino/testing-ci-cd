@@ -10,6 +10,8 @@ app.use("/users", users);
 
 app.use(express.json());
 
+app.use("/users", users);
+
 app.use(handleErrorMiddleware);
 
 export default app;
