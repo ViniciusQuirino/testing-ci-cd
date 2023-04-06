@@ -49,7 +49,7 @@ export const createUserService = async ({
 	});
 
 	const result = {
-		newUser,
+		...newUser,
 		address: newAddress,
 	};
 

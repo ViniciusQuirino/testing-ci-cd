@@ -32,6 +32,7 @@ export interface IUserUpdateRequest {
 }
 
 export interface IUserWithAddressResponse {
+	id: string;
 	name: string;
 	cpf: string;
 	email: string;
@@ -40,10 +41,12 @@ export interface IUserWithAddressResponse {
 	birth_date: Date;
 	image_url: string;
 	is_seller: boolean;
+	is_adm: boolean;
 	address: IAddressCreateRequest;
 }
 
 export interface IUserResponse {
+	id: string;
 	name: string;
 	cpf: string;
 	email: string;
@@ -52,4 +55,5 @@ export interface IUserResponse {
 	birth_date: Date;
 	image_url: string;
 	is_seller: boolean;
+	is_adm: boolean;
 }
