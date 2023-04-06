@@ -19,5 +19,9 @@ export const ensureUserExistsMiddleware = async (
 		throw new AppError("User not found", 404);
 	}
 
+	if (!user.is_active) {
+		throw new AppError("Disabled user", 404);
+	}
+
 	return next();
 };
