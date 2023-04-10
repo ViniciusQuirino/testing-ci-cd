@@ -64,7 +64,7 @@ model Car {
   is_active   Boolean    @default(true)
   sold        Boolean    @default(false)
   user        User       @relation(fields: [user_id], references: [id])
-  user_id     String     
+  user_id     String
   comments    Comments[]
   images      Image?
 }
@@ -77,6 +77,6 @@ model Image {
   image_three String  @db.VarChar(255)
   image_four  String? @db.VarChar(255)
   image_five  String? @db.VarChar(255)
-  car         Car?     @relation(fields: [car_id], references: [id])
+  car         Car?    @relation(fields: [car_id], references: [id])
   car_id      String  @unique
 }
