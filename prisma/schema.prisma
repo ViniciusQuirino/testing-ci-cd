@@ -36,7 +36,6 @@ model Address {
   zip_code    String  @db.VarChar(8)
   city        String  @db.VarChar(60)
   state       String  @db.VarChar(60)
-  description String  @db.VarChar(60)
   user        User    @relation(fields: [user_id], references: [id])
   user_id     String  @unique
 }
