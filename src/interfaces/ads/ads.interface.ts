@@ -8,6 +8,34 @@ export interface IAdsCreateRequest {
 	km: number;
 	price: number;
 	description: string;
+	images: {
+		main_image: string;
+		image_one: string;
+		image_two: string;
+		image_three: string;
+		image_four?: string;
+		image_five?: string;
+	};
+}
+
+export interface IAdsUpdateRequest {
+	brand?: string;
+	model?: string;
+	launch_year?: Date;
+	car_color?: string;
+	fuel?: number;
+	fuel_type?: string;
+	km?: number;
+	price?: number;
+	description?: string;
+	images?: {
+		main_image?: string;
+		image_one?: string;
+		image_two?: string;
+		image_three?: string;
+		image_four?: string;
+		image_five?: string;
+	};
 }
 
 export interface IAdsResponse {
@@ -23,4 +51,15 @@ export interface IAdsResponse {
 	description: string;
 	is_active: boolean;
 	sold: boolean;
+	images: {
+		id: string;
+		main_image: string;
+		image_one: string;
+		image_two: string;
+		image_three: string;
+		image_four?: string;
+		image_five?: string;
+		car_id: string;
+	};
+	user_id: string;
 }

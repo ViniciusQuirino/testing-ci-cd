@@ -93,9 +93,6 @@ CREATE UNIQUE INDEX "Comments_user_id_key" ON "Comments"("user_id");
 CREATE UNIQUE INDEX "Comments_car_id_key" ON "Comments"("car_id");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Car_user_id_key" ON "Car"("user_id");
-
--- CreateIndex
 CREATE UNIQUE INDEX "Image_car_id_key" ON "Image"("car_id");
 
 -- AddForeignKey

@@ -12,6 +12,7 @@ export const createAdsService = async ({
 	km,
 	price,
 	description,
+	images,
 }: IAdsCreateRequest) => {
 	const newAds = await prisma.car.create({
 		data: {
@@ -24,11 +25,28 @@ export const createAdsService = async ({
 			km,
 			price,
 			description,
-			user_id: "77e25c52-7e69-425e-a558-4b4128a0c3b3", //colocar id de algum usuário já criado
+			user_id: "3e83d72a-c1cd-4c09-80bc-fe9c26574192", //colocar id de algum usuário já criado
 		},
 	});
 
-	const validatedData = adsResponseSerializer.validate(newAds, {
+	const newImages = await prisma.image.create({
+		data: {
+			main_image: images.main_image,
+			image_one: images.main_image,
+			image_two: images.main_image,
+			image_three: images.main_image,
+			image_four: images.main_image,
+			image_five: images.main_image,
+			car_id: newAds.id,
+		},
+	});
+
+	const result = {
+		...newAds,
+		images: newImages,
+	};
+
+	const validatedData = adsResponseSerializer.validate(result, {
 		stripUnknown: true,
 	});
 
