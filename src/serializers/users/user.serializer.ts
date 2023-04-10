@@ -23,7 +23,6 @@ export const userCreateRequestSerializer: SchemaOf<IUserCreateRequest> = yup.obj
 		zip_code: yup.string().required(),
 		city: yup.string().required(),
 		state: yup.string().required(),
-		description: yup.string().required(),
 	}),
 });
 export const userWithAddressResponseSerializer: SchemaOf<IUserWithAddressResponse> = yup
@@ -47,7 +46,6 @@ export const userWithAddressResponseSerializer: SchemaOf<IUserWithAddressRespons
 			zip_code: yup.string().required(),
 			city: yup.string().required(),
 			state: yup.string().required(),
-			description: yup.string().required(),
 		}),
 	});
 

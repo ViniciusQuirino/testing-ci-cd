@@ -38,7 +38,6 @@ export const createUserService = async ({
 	const newAddress = await prisma.address.create({
 		data: {
 			city: address.city,
-			description: address.description,
 			number: address.number,
 			state: address.state,
 			street: address.state,

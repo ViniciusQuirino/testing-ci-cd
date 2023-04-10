@@ -5,5 +5,4 @@ export interface IAddressCreateRequest {
 	zip_code: string;
 	city: string;
 	state: string;
-	description: string;
 }
