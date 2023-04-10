@@ -23,5 +23,7 @@ export const ensureAdsExistsMiddleware = async (
 		throw new AppError("Ads not found", 404);
 	}
 
+	//req.ads = ads;
+
 	return next();
 };
