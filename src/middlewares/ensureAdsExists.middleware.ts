@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { AppError } from "../errors/appError";
 import { prisma } from "../prisma";
+import { IAdsResponse } from "../interfaces/ads/ads.interface";
 
 export const ensureAdsExistsMiddleware = async (
 	req: Request,
@@ -23,7 +24,7 @@ export const ensureAdsExistsMiddleware = async (
 		throw new AppError("Ads not found", 404);
 	}
 
-	//req.ads = ads;
+	req.ads = ads as IAdsResponse;
 
 	return next();
 };
