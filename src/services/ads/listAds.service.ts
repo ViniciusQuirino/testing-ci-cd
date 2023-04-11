@@ -6,7 +6,7 @@ export const listAdsService = async (page: number, limit: number) => {
       select: {
         ...prisma.$exclude("car", ["user_id"]),
         images: { select: prisma.$exclude("image", ["car_id"]) },
-        comments: true,
+        comments: { select: prisma.$exclude("comments", ["car_id"]) },
         user: {
           select: prisma.$exclude("user", ["cpf", "password"]),
         },
