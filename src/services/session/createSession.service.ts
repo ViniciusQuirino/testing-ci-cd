@@ -2,9 +2,9 @@ import { compare } from "bcrypt";
 import jwt from "jsonwebtoken";
 import { prisma } from "../../prisma";
 import { AppError } from "../../errors/appError";
-import { ILoginRequest } from "../../interfaces/session/session.interface";
+import { ILoginRequest, ILoginResponse } from "../../interfaces/session/session.interface";
 
-export const createSessionService = async ({ email, password }: ILoginRequest): Promise<string> => {
+export const createSessionService = async ({ email, password }: ILoginRequest): Promise<ILoginResponse> => {
 	const user = await prisma.user.findUnique({
 		where: {
 			email: email,
@@ -37,5 +37,5 @@ export const createSessionService = async ({ email, password }: ILoginRequest): 
 		}
 	);
 
-	return token;
+	return { token };
 };
