@@ -32,11 +32,11 @@ export const createAdsService = async ({
 	const newImages = await prisma.image.create({
 		data: {
 			main_image: images.main_image,
-			image_one: images.main_image,
-			image_two: images.main_image,
-			image_three: images.main_image,
-			image_four: images.main_image,
-			image_five: images.main_image,
+			image_one: images.image_one,
+			image_two: images.image_two,
+			image_three: images.image_three,
+			image_four: images.image_four ? images.image_four : "",
+			image_five: images.image_five ? images.image_five : "",
 			car_id: newAds.id,
 		},
 	});
