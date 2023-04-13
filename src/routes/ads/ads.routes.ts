@@ -13,7 +13,7 @@ import { updateAdsController } from "../../controllers/ads/updateAds.controller"
 export const adsRoutes = express.Router();
 
 adsRoutes.post("", ensureDataIsValidMiddleware(adsCreateRequestSerializer), createAdsController);
-adsRoutes.delete("/:id", deleteAdsController);
+adsRoutes.delete("/:id", ensureAdsExistsMiddleware, deleteAdsController);
 adsRoutes.get("", listAdsController);
 adsRoutes.patch(
 	"/:id",
