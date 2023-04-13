@@ -7,14 +7,14 @@ export const listAdsService = async (queries: IAdsQueries, outherQueries: IAdsQu
   const adsList = await prisma.car.paginate(
     {
       where: {
-        OR:
+        AND:
           Object.keys(outherQueries).length || Object.keys(queries).length
             ? [
-                outherQueries,
-                { km: { gte: min_km } },
-                { km: { lte: max_km } },
-                { price: { gte: min_price } },
-                { price: { lte: max_price } },
+              outherQueries,
+              { km: { gte: min_km } },
+              { km: { lte: max_km } },
+              { price: { gte: min_price } },
+              { price: { lte: max_price } },
               ]
             : undefined,
       },
