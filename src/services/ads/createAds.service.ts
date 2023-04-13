@@ -25,7 +25,7 @@ export const createAdsService = async ({
 			km,
 			price,
 			description,
-			user_id: "3e83d72a-c1cd-4c09-80bc-fe9c26574192", //colocar id de algum usuário já criado
+			user_id: "5d105c92-4b18-4361-a334-5eb9e15684e4", //colocar id de algum usuário já criado
 		},
 	});
 
