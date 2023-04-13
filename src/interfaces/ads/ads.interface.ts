@@ -63,3 +63,17 @@ export interface IAdsResponse {
 	};
 	user_id: string;
 }
+
+export interface IAdsQueries {
+	brand?: string;
+    model?: string;
+    car_color?: string;
+    launch_year?: string;
+    fuel_type?: string;
+    min_km?: number;
+    max_km?: number;
+    min_price?: number;
+    max_price?: number;
+    page?: number;
+    limit?: number;
+}
