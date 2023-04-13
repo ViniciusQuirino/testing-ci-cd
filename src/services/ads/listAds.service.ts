@@ -1,7 +1,10 @@
 import { IAdsQueries } from "../../interfaces/ads/ads.interface";
 import { prisma } from "../../prisma";
 
-export const listAdsService = async (queries: IAdsQueries, outherQueries: IAdsQueries) => {
+export const listAdsService = async (
+  queries: IAdsQueries,
+  outherQueries: IAdsQueries
+) => {
   const { min_km, max_km, min_price, max_price, limit, page } = queries;
 
   const adsList = await prisma.car.paginate(
@@ -10,11 +13,11 @@ export const listAdsService = async (queries: IAdsQueries, outherQueries: IAdsQu
         AND:
           Object.keys(outherQueries).length || Object.keys(queries).length
             ? [
-              outherQueries,
-              { km: { gte: min_km } },
-              { km: { lte: max_km } },
-              { price: { gte: min_price } },
-              { price: { lte: max_price } },
+                outherQueries,
+                { km: { gte: min_km } },
+                { km: { lte: max_km } },
+                { price: { gte: min_price } },
+                { price: { lte: max_price } },
               ]
             : undefined,
       },
