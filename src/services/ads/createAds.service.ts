@@ -25,18 +25,18 @@ export const createAdsService = async ({
 			km,
 			price,
 			description,
-			user_id: "5d105c92-4b18-4361-a334-5eb9e15684e4", //colocar id de algum usuário já criado
+			user_id: "9ade970e-d45d-41d6-b256-53fbafe0cbdd", //colocar id de algum usuário já criado
 		},
 	});
 
 	const newImages = await prisma.image.create({
 		data: {
 			main_image: images.main_image,
-			image_one: images.main_image,
-			image_two: images.main_image,
-			image_three: images.main_image,
-			image_four: images.main_image,
-			image_five: images.main_image,
+			image_one: images.image_one,
+			image_two: images.image_two,
+			image_three: images.image_three,
+			image_four: images.image_four ? images.image_four : "",
+			image_five: images.image_five ? images.image_five : "",
 			car_id: newAds.id,
 		},
 	});

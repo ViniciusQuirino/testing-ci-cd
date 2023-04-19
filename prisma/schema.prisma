@@ -29,23 +29,23 @@ model User {
 }
 
 model Address {
-  id          String  @id @default(uuid())
-  street      String  @db.VarChar(127)
-  number      String  @db.VarChar(60)
-  complement  String? @db.VarChar(60)
-  zip_code    String  @db.VarChar(8)
-  city        String  @db.VarChar(60)
-  state       String  @db.VarChar(60)
-  user        User    @relation(fields: [user_id], references: [id])
-  user_id     String  @unique
+  id         String  @id @default(uuid())
+  street     String  @db.VarChar(127)
+  number     String  @db.VarChar(60)
+  complement String? @db.VarChar(60)
+  zip_code   String  @db.VarChar(8)
+  city       String  @db.VarChar(60)
+  state      String  @db.VarChar(60)
+  user       User    @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user_id    String  @unique
 }
 
 model Comments {
   id          String @id @default(uuid())
   description String @db.VarChar(255)
-  user        User   @relation(fields: [user_id], references: [id])
+  user        User   @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   user_id     String @unique
-  car         Car    @relation(fields: [car_id], references: [id])
+  car         Car    @relation(fields: [car_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   car_id      String @unique
 }
 
@@ -62,7 +62,7 @@ model Car {
   description String     @db.VarChar(255)
   is_active   Boolean    @default(true)
   sold        Boolean    @default(false)
-  user        User       @relation(fields: [user_id], references: [id])
+  user        User       @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   user_id     String
   comments    Comments[]
   images      Image?
@@ -76,6 +76,6 @@ model Image {
   image_three String  @db.VarChar(255)
   image_four  String? @db.VarChar(255)
   image_five  String? @db.VarChar(255)
-  car         Car?    @relation(fields: [car_id], references: [id])
+  car         Car?    @relation(fields: [car_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   car_id      String  @unique
 }
