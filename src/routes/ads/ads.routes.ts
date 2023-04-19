@@ -9,6 +9,7 @@ import { deleteAdsController } from "../../controllers/ads/deleteAds.controller"
 import { listAdsController } from "../../controllers/ads/listAds.controller";
 import { ensureAdsExistsMiddleware } from "../../middlewares/ensureAdsExists.middleware";
 import { updateAdsController } from "../../controllers/ads/updateAds.controller";
+import { ensureAdsQueryType } from "../../middlewares/ensureAdsQueryType.middleware";
 import { ensureAuthMiddleware } from "../../middlewares/ensureAuth.middleware";
 import { ensureIsOwnerOfAdsOrAdm } from "../../middlewares/ensureIsOwnerOfAdsOrAdm.middleware";
 
@@ -27,7 +28,7 @@ adsRoutes.delete(
   ensureIsOwnerOfAdsOrAdm,
   deleteAdsController
 );
-adsRoutes.get("", listAdsController);
+adsRoutes.get("", ensureAdsQueryType, listAdsController);
 adsRoutes.patch(
   "/:id",
   ensureAuthMiddleware,
