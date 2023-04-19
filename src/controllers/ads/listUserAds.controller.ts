@@ -3,15 +3,13 @@ import listUserAdsService from '../../services/ads/listUserAds.service';
 
 export const listUserAdsControllers = async (req: Request, res: Response) => {
   
-	try {
-    const id = req.params.id;
-    const listAd = await listUserAdsService(id);
+	const id: string = "75d5c336-4641-49cb-b186-fd26c93d3dfa";
+	const car: object = req.body.car;
 
-    return res.json(listAd);
-  } 
-	catch (error) {
-    if (error instanceof Error) {
-      return res.status(400).json({message: error.message,});
-    }
-  }
+  const data: any = await listUserAdsService(id, car);
+	
+  console.log(data)
+
+  return res.status(200).json(data);
+
 };
