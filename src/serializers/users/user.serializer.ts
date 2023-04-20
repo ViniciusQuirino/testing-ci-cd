@@ -4,7 +4,9 @@ import {
 	IUserCreateRequest,
 	IUserResponse,
 	IUserWithAddressResponse,
+	IUserWithCarsResponse,
 } from "../../interfaces/users/user.interface";
+import { adsResponseSerializer } from "../ads/ads.serializer";
 
 export const userCreateRequestSerializer: SchemaOf<IUserCreateRequest> = yup.object().shape({
 	name: yup.string().required(),
@@ -65,4 +67,19 @@ export const userResponseSerializer: SchemaOf<IUserResponse> = yup.object().shap
 	image_url: yup.string().required(),
 	is_seller: yup.boolean().required(),
 	is_adm: yup.boolean().required(),
+});
+
+export const userWithCarsResponseSerializer: SchemaOf<IUserWithCarsResponse> = yup.object().shape({
+	id: yup.string().required(),
+	name: yup.string().required(),
+	email: yup.string().email().required(),
+	cpf: yup.string().required(),
+	password: yup.string().required(),
+	birth_date: yup.date().required(),
+	phone_number: yup.string().required(),
+	description: yup.string(),
+	image_url: yup.string().required(),
+	is_seller: yup.boolean().required(),
+	is_adm: yup.boolean().required(),
+	cars: yup.array(adsResponseSerializer),
 });

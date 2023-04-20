@@ -8,6 +8,7 @@ import { ensureUniqueFieldsMiddleware } from "../../middlewares/ensureUniqueFiel
 import { ensureIsAdminOrAccountOwnerMiddleware } from "../../middlewares/ensureIsAdminOrAccountOwner.middleware";
 import { deleteUserController } from "../../controllers/users/deleteUser.controller";
 import { listUserAdsControllers } from "../../controllers/users/listUserAds.controller";
+import { retrieveUserController } from "../../controllers/users/retrieveUser.controller";
 
 export const userRoutes = express.Router();
 
@@ -19,6 +20,7 @@ userRoutes.post(
 );
 userRoutes.get("", listUsersController);
 userRoutes.get("/:id", listUserAdsControllers);
+userRoutes.get("/profile", ensureAuthMiddleware, retrieveUserController);
 
 userRoutes.delete(
 	"",
