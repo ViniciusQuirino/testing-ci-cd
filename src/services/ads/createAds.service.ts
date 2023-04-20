@@ -1,19 +1,20 @@
-import { IAdsCreateRequest } from "../../interfaces/ads/ads.interface";
+import { IAdsCreateData, IAdsCreateRequest } from "../../interfaces/ads/ads.interface";
 import { prisma } from "../../prisma";
 import { adsResponseSerializer } from "../../serializers/ads/ads.serializer";
 
 export const createAdsService = async ({
 	brand,
-	model,
-	launch_year,
 	car_color,
+	description,
 	fuel,
 	fuel_type,
-	km,
-	price,
-	description,
 	images,
-}: IAdsCreateRequest) => {
+	km,
+	launch_year,
+	model,
+	price,
+	user_id,
+}: IAdsCreateData) => {
 	const newAds = await prisma.car.create({
 		data: {
 			brand,
@@ -25,7 +26,7 @@ export const createAdsService = async ({
 			km,
 			price,
 			description,
-			user_id: "9ade970e-d45d-41d6-b256-53fbafe0cbdd", //colocar id de algum usuário já criado
+			user_id,
 		},
 	});
 
