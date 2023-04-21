@@ -22,7 +22,8 @@ model User {
   image_url    String?    @db.VarChar(255)
   is_adm       Boolean    @default(false)
   is_seller    Boolean
-  is_active    Boolean    @default(true)
+  reset_token  String?
+  expires_in   DateTime?
   address      Address?
   cars         Car[]
   comments     Comments[]
