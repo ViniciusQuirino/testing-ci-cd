@@ -19,7 +19,7 @@ export const userCreateRequestSerializer: SchemaOf<IUserCreateRequest> = yup.obj
 	address: yup.object().shape({
 		street: yup.string().required(),
 		number: yup.string().required(),
-		complement: yup.string().required(),
+		complement: yup.string().notRequired(),
 		zip_code: yup.string().required(),
 		city: yup.string().required(),
 		state: yup.string().required(),
@@ -42,7 +42,7 @@ export const userWithAddressResponseSerializer: SchemaOf<IUserWithAddressRespons
 			id: yup.string().required(),
 			street: yup.string().required(),
 			number: yup.string().required(),
-			complement: yup.string().required(),
+			complement: yup.string().notRequired(),
 			zip_code: yup.string().required(),
 			city: yup.string().required(),
 			state: yup.string().required(),
