@@ -21,10 +21,6 @@ export const createSessionService = async ({ email, password }: ILoginRequest): 
 		throw new AppError("Invalid user or password", 401);
 	}
 
-	if (!user?.is_active) {
-		throw new AppError("User account is disabled", 404);
-	}
-
 	const token = jwt.sign(
 		{
 			isAdm: user.is_adm,
