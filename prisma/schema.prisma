@@ -56,7 +56,6 @@ model Car {
   model       String     @db.VarChar(60)
   launch_year DateTime   @db.Date
   car_color   String     @db.VarChar(8)
-  fuel        Int
   fuel_type   String     @db.VarChar(60)
   km          Float
   price       Float
@@ -74,7 +73,7 @@ model Image {
   main_image  String  @db.VarChar(255)
   image_one   String  @db.VarChar(255)
   image_two   String  @db.VarChar(255)
-  image_three String  @db.VarChar(255)
+  image_three String?  @db.VarChar(255)
   image_four  String? @db.VarChar(255)
   image_five  String? @db.VarChar(255)
   car         Car?    @relation(fields: [car_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
