@@ -10,9 +10,10 @@ import { retrieveUserController } from "../../controllers/users/retrieveUser.con
 import { ensureIsAdminOrAccountOwnerMiddleware } from "../../middlewares/ensureIsAdminOrAccountOwner.middleware";
 import { deleteUserController } from "../../controllers/users/deleteUser.controller";
 import { listUserAdsControllers } from "../../controllers/ads/listUserAds.controller";
-import { ensureEmailMiddleware } from "../../middlewares/ensureEmailExists";
+import { ensureEmailMiddleware } from "../../middlewares/ensureEmailExists.middleware";
 import { sendEmailController } from "../../controllers/users/sendEmail.controller";
 import { resetPasswordController } from "../../controllers/users/resetPassword.controller";
+import { ensureTokenExistsMiddleware } from "../../middlewares/ensureTokenExists.middleware";
 
 export const userRoutes = express.Router();
 
@@ -23,7 +24,12 @@ userRoutes.post(
   createUserController
 );
 userRoutes.get("", ensureAuthMiddleware, retrieveUserController);
-userRoutes.get("/all", ensureAuthMiddleware, ensureIsAdminMiddleware, listUsersController);
+userRoutes.get(
+  "/all",
+  ensureAuthMiddleware,
+  ensureIsAdminMiddleware,
+  listUsersController
+);
 userRoutes.get("/:id", listUserAdsControllers);
 
 userRoutes.delete(
@@ -34,4 +40,8 @@ userRoutes.delete(
 );
 
 userRoutes.post("/resetpassword", ensureEmailMiddleware, sendEmailController);
-userRoutes.patch("/resetpassword/:token", ensureEmailMiddleware, resetPasswordController);
+userRoutes.patch(
+  "/resetpassword/:token",
+  ensureTokenExistsMiddleware,
+  resetPasswordController
+);

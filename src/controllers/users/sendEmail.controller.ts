@@ -6,6 +6,5 @@ export const sendEmailController = async (req: Request, res: Response) => {
   const host = req.get("host");
 
   const response = await sendEmailService(user, protocol, host!);
-
   return res.status(200).json(response);
 };

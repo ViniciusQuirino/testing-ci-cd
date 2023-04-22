@@ -5,11 +5,10 @@ import { userResponseSerializer } from "../serializers/users/user.serializer";
 
 export const ensureEmailMiddleware = async (req: Request, _: Response, next: NextFunction) => {
   const { email } = req.body;
-
   const user = await prisma.user.findFirst({ where: { email } });
 
   if (!user) {
-    throw new AppError("User not found.", 404);
+    throw new AppError("E-mail not found.", 404);
   }
 
   const response = await userResponseSerializer.validate(user, {

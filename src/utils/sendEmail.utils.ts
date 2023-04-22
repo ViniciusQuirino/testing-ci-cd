@@ -38,7 +38,7 @@ const resetPasswordTemplate = (
     theme: "default",
     product: {
       name: "Motors shop",
-      link: `${protocol}://${host}`,
+      link: "https://www.geeksforgeeks.org/",
       logo: "https://cdn.discordapp.com/attachments/1092588708198350869/1099099499571454022/Logo.png",
       copyright: "© 2023 Motors shop. Todos os direitos reservados.",
     },

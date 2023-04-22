@@ -6,6 +6,5 @@ export const resetPasswordController = async (req: Request, res: Response) => {
   const { token } = req.params;
 
   const response = await resetPasswordService(password, token);
-
   return res.status(200).json(response);
 };

@@ -4,7 +4,6 @@ import { prisma } from "../../prisma";
 
 export const resetPasswordService = async (newPassword: string, token: string) => {
   const { sub } = decode(token) as JwtPayload;
-
   const password = await hash(newPassword, 10);
 
   await prisma.user.update({
