@@ -4,27 +4,27 @@ import { prisma } from "../prisma";
 import { IAdsResponse } from "../interfaces/ads/ads.interface";
 
 export const ensureAdsExistsMiddleware = async (
-	req: Request,
-	res: Response,
-	next: NextFunction
+  req: Request,
+  res: Response,
+  next: NextFunction
 ) => {
-	const id = req.params.id;
+  const id = req.params.id;
 
-	const ads = await prisma.car.findUnique({
-		where: {
-			id: id,
-		},
+  const ads = await prisma.car.findUnique({
+    where: {
+      id: id,
+    },
 
-		include: {
-			images: true,
-		},
-	});
+    include: {
+      images: true,
+    },
+  });
 
-	if (!ads) {
-		throw new AppError("Ads not found", 404);
-	}
+  if (!ads) {
+    throw new AppError("Ads not found", 404);
+  }
 
-	req.ads = ads as IAdsResponse;
+  req.ads = ads as unknown as IAdsResponse;
 
-	return next();
+  return next();
 };

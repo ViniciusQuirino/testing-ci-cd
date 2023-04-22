@@ -12,7 +12,7 @@ export const adsCreateRequestSerializer: SchemaOf<IAdsCreateRequest> = yup
   .shape({
     brand: yup.string().required(),
     car_color: yup.string().required(),
-    fuel: yup.number().required(),
+
     fuel_type: yup.string().required(),
     description: yup.string().required(),
     km: yup.number().required(),
@@ -23,7 +23,7 @@ export const adsCreateRequestSerializer: SchemaOf<IAdsCreateRequest> = yup
       main_image: yup.string().required(),
       image_one: yup.string().required(),
       image_two: yup.string().required(),
-      image_three: yup.string().required(),
+      image_three: yup.string().notRequired(),
       image_four: yup.string(),
       image_five: yup.string(),
     }),
@@ -34,7 +34,7 @@ export const adsUpdateRequestSerializer: SchemaOf<IAdsUpdateRequest> = yup
   .shape({
     brand: yup.string(),
     car_color: yup.string(),
-    fuel: yup.number(),
+
     fuel_type: yup.string(),
     description: yup.string(),
     km: yup.number().required(),
@@ -60,7 +60,7 @@ export const adsResponseSerializer: SchemaOf<IAdsResponse> = yup
     id: yup.string().required(),
     brand: yup.string().required(),
     car_color: yup.string().required(),
-    fuel: yup.number().required(),
+
     fuel_type: yup.string().required(),
     description: yup.string().required(),
     km: yup.number().required(),
@@ -74,9 +74,9 @@ export const adsResponseSerializer: SchemaOf<IAdsResponse> = yup
       main_image: yup.string().required(),
       image_one: yup.string().required(),
       image_two: yup.string().required(),
-      image_three: yup.string().required(),
-      image_four: yup.string(),
-      image_five: yup.string(),
+      image_three: yup.string().notRequired(),
+      image_four: yup.string().notRequired(),
+      image_five: yup.string().notRequired(),
       car_id: yup.string().required(),
     }),
     user_id: yup.string().required(),
