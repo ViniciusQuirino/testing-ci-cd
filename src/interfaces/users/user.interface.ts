@@ -57,3 +57,17 @@ export interface IUserResponse {
 	is_seller: boolean;
 	is_adm: boolean;
 }
+
+export interface ISendEmailRequest {
+    to: string;
+    subject: string;
+    html: string;
+  }
+  
+  export interface ISendEmailTemplate {
+    userName: string;
+    userEmail: string;
+    protocol: string;
+    host: string;
+    resetToken: string;
+  }
