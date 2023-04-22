@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { Request, Response, NextFunction } from "express";
 import { adsQueriesSerializer } from "../serializers/ads/ads.serializer";
-import exclude from "../utils/excludeKeys";
+import exclude from "../utils/excludeKeys.utils";
 import { AppError } from "../errors/appError";
 
 export const ensureAdsQueryType = async (req: Request, res: Response, next: NextFunction) => {

@@ -23,7 +23,6 @@ model User {
   is_adm       Boolean    @default(false)
   is_seller    Boolean
   reset_token  String?
-  expires_in   DateTime?
   address      Address?
   cars         Car[]
   comments     Comments[]

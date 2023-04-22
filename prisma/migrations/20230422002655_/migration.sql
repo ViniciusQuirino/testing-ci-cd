@@ -11,7 +11,7 @@ CREATE TABLE "User" (
     "image_url" VARCHAR(255),
     "is_adm" BOOLEAN NOT NULL DEFAULT false,
     "is_seller" BOOLEAN NOT NULL,
-    "is_active" BOOLEAN NOT NULL DEFAULT true,
+    "reset_token" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
