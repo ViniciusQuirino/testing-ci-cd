@@ -72,7 +72,7 @@ model Image {
   main_image  String  @db.VarChar(255)
   image_one   String  @db.VarChar(255)
   image_two   String  @db.VarChar(255)
-  image_three String?  @db.VarChar(255)
+  image_three String? @db.VarChar(255)
   image_four  String? @db.VarChar(255)
   image_five  String? @db.VarChar(255)
   car         Car?    @relation(fields: [car_id], references: [id], onDelete: Cascade, onUpdate: Cascade)

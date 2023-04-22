@@ -38,8 +38,6 @@ export const ensureAuthMiddleware = async (req: Request, res: Response, next: Ne
 
 		req.user = filteredUser;
 
-		console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ esse aq", req.user);
-
 		return next();
 	});
 };

@@ -3,7 +3,6 @@ export interface IAdsCreateRequest {
 	model: string;
 	launch_year: Date;
 	car_color: string;
-	fuel: number;
 	fuel_type: string;
 	km: number;
 	price: number;
@@ -12,7 +11,7 @@ export interface IAdsCreateRequest {
 		main_image: string;
 		image_one: string;
 		image_two: string;
-		image_three: string;
+		image_three?: string;
 		image_four?: string;
 		image_five?: string;
 	};
@@ -27,7 +26,6 @@ export interface IAdsUpdateRequest {
 	model?: string;
 	launch_year?: Date;
 	car_color?: string;
-	fuel?: number;
 	fuel_type?: string;
 	km?: number;
 	price?: number;
@@ -48,7 +46,6 @@ export interface IAdsResponse {
 	model: string;
 	launch_year: Date;
 	car_color: string;
-	fuel: number;
 	fuel_type: string;
 	km: number;
 	price: number;
@@ -60,7 +57,7 @@ export interface IAdsResponse {
 		main_image: string;
 		image_one: string;
 		image_two: string;
-		image_three: string;
+		image_three?: string;
 		image_four?: string;
 		image_five?: string;
 		car_id: string;

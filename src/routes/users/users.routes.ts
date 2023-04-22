@@ -7,34 +7,29 @@ import { ensureAuthMiddleware } from "../../middlewares/ensureAuth.middleware";
 import { ensureUniqueFieldsMiddleware } from "../../middlewares/ensureUniqueFields.middleware";
 import { ensureIsAdminOrAccountOwnerMiddleware } from "../../middlewares/ensureIsAdminOrAccountOwner.middleware";
 import { deleteUserController } from "../../controllers/users/deleteUser.controller";
-import { listUserAdsControllers } from "../../controllers/ads/listUserAds.controller";
 import { ensureEmailMiddleware } from "../../middlewares/ensureEmailExists.middleware";
 import { sendEmailController } from "../../controllers/users/sendEmail.controller";
 import { resetPasswordController } from "../../controllers/users/resetPassword.controller";
 import { ensureTokenExistsMiddleware } from "../../middlewares/ensureTokenExists.middleware";
+import { listUniqueUserController } from "../../controllers/users/listUniqueUser.controller";
 
 export const userRoutes = express.Router();
 
 userRoutes.post(
-  "",
-  ensureDataIsValidMiddleware(userCreateRequestSerializer),
-  ensureUniqueFieldsMiddleware,
-  createUserController
+	"",
+	ensureDataIsValidMiddleware(userCreateRequestSerializer),
+	ensureUniqueFieldsMiddleware,
+	createUserController
 );
 userRoutes.get("", listUsersController);
-userRoutes.get("/:id", listUserAdsControllers);
-userRoutes.get("/profile", ensureAuthMiddleware, retrieveUserController);
+userRoutes.get("/:id", listUniqueUserController);
 
 userRoutes.delete(
-  "",
-  ensureAuthMiddleware,
-  ensureIsAdminOrAccountOwnerMiddleware,
-  deleteUserController
+	"",
+	ensureAuthMiddleware,
+	ensureIsAdminOrAccountOwnerMiddleware,
+	deleteUserController
 );
 
 userRoutes.post("/resetpassword", ensureEmailMiddleware, sendEmailController);
-userRoutes.patch(
-  "/resetpassword/:token",
-  ensureTokenExistsMiddleware,
-  resetPasswordController
-);
+userRoutes.patch("/resetpassword/:token", ensureTokenExistsMiddleware, resetPasswordController);
