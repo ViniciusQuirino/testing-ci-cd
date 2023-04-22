@@ -1,5 +1,6 @@
 import { number } from "yup";
 import { IAddressCreateRequest } from "../adresses/address.interface";
+import { IAdsResponse } from "../ads/ads.interface";
 
 export interface IUserLogin {
   email: string;
@@ -43,6 +44,10 @@ export interface IUserWithAddressResponse {
   is_seller: boolean;
   is_adm: boolean;
   address: IAddressCreateRequest;
+}
+
+export interface IUserWithCarsResponse extends IUserResponse {
+	cars: IAdsResponse[];
 }
 
 export interface IUserResponse {

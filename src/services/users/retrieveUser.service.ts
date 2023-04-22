@@ -1,20 +1,21 @@
-import { IUserWithAddressResponse } from "../../interfaces/users/user.interface";
+import { IUserResponse, IUserWithAddressResponse } from "../../interfaces/users/user.interface";
 import { prisma } from "../../prisma";
-import { userWithAddressResponseSerializer } from "../../serializers/users/user.serializer";
+import { userResponseSerializer } from "../../serializers/users/user.serializer";
 
-export const retrieveUserService = async (userId: string): Promise<IUserWithAddressResponse> => {
-	const usersList = await prisma.user.findUnique({
+const retriveUserService = async (id: string) => {
+	const user = await prisma.user.findUnique({
 		where: {
-			id: userId,
-		},
-		include: {
-			address: true,
+			id: id,
 		},
 	});
 
-	const validatedData = await userWithAddressResponseSerializer.validate(usersList, {
+	console.log("@@@@@@@@@@@@@@@@@@@@@@\n", user);
+
+	const validatedData = await userResponseSerializer.validate(user, {
 		stripUnknown: true,
 	});
 
-	return validatedData!;
+	return validatedData;
 };
+
+export default retriveUserService;

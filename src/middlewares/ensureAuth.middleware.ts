@@ -19,7 +19,7 @@ export const ensureAuthMiddleware = async (req: Request, res: Response, next: Ne
 
 	jwt.verify(token, process.env.SECRET_KEY as string, async (error, decoded: any) => {
 		if (error) {
-			throw new AppError("Invalid token", 401);
+			return res.status(401).json({ message: "Invalid Token" });
 		}
 
 		const user = await prisma.user.findUnique({
@@ -29,7 +29,7 @@ export const ensureAuthMiddleware = async (req: Request, res: Response, next: Ne
 		});
 
 		if (!user) {
-			throw new AppError("Invalid token", 401);
+			return res.status(401).json({ message: "Invalid Token" });
 		}
 
 		const filteredUser = await userResponseSerializer.validate(user, {
@@ -37,6 +37,8 @@ export const ensureAuthMiddleware = async (req: Request, res: Response, next: Ne
 		});
 
 		req.user = filteredUser;
+
+		console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ esse aq", req.user);
 
 		return next();
 	});
