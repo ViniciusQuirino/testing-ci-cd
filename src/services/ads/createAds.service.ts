@@ -6,7 +6,6 @@ export const createAdsService = async ({
 	brand,
 	car_color,
 	description,
-	fuel,
 	fuel_type,
 	images,
 	km,
@@ -21,7 +20,6 @@ export const createAdsService = async ({
 			model,
 			launch_year,
 			car_color,
-			fuel,
 			fuel_type,
 			km,
 			price,
@@ -29,28 +27,27 @@ export const createAdsService = async ({
 			user_id,
 		},
 	});
- 
 
-  const newImages = await prisma.image.create({
-    data: {
-      main_image: images.main_image,
-      image_one: images.image_one,
-      image_two: images.image_two,
-      image_three: images.image_three ? images.image_three : "",
-      image_four: images.image_four ? images.image_four : "",
-      image_five: images.image_five ? images.image_five : "",
-      car_id: newAds.id,
-    },
-  });
+	const newImages = await prisma.image.create({
+		data: {
+			main_image: images.main_image,
+			image_one: images.image_one,
+			image_two: images.image_two,
+			image_three: images.image_three ? images.image_three : "",
+			image_four: images.image_four ? images.image_four : "",
+			image_five: images.image_five ? images.image_five : "",
+			car_id: newAds.id,
+		},
+	});
 
-  const result = {
-    ...newAds,
-    images: newImages,
-  };
+	const result = {
+		...newAds,
+		images: newImages,
+	};
 
-  const validatedData = adsResponseSerializer.validate(result, {
-    stripUnknown: true,
-  });
+	const validatedData = adsResponseSerializer.validate(result, {
+		stripUnknown: true,
+	});
 
-  return validatedData;
+	return validatedData;
 };
