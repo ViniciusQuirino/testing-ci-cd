@@ -1,7 +1,7 @@
 export interface IAdsCreateRequest {
 	brand: string;
 	model: string;
-	launch_year: Date;
+	launch_year: number;
 	car_color: string;
 	fuel_type: string;
 	km: number;
@@ -24,7 +24,7 @@ export interface IAdsCreateData extends IAdsCreateRequest {
 export interface IAdsUpdateRequest {
 	brand?: string;
 	model?: string;
-	launch_year?: Date;
+	launch_year?: number;
 	car_color?: string;
 	fuel_type?: string;
 	km?: number;
@@ -44,7 +44,7 @@ export interface IAdsResponse {
 	id: string;
 	brand: string;
 	model: string;
-	launch_year: Date;
+	launch_year: number;
 	car_color: string;
 	fuel_type: string;
 	km: number;
@@ -69,7 +69,7 @@ export interface IAdsQueries {
 	brand?: string;
 	model?: string;
 	car_color?: string;
-	launch_year?: string;
+	launch_year?: number;
 	fuel_type?: string;
 	min_km?: number;
 	max_km?: number;
