@@ -12,6 +12,7 @@ import { sendEmailController } from "../../controllers/users/sendEmail.controlle
 import { resetPasswordController } from "../../controllers/users/resetPassword.controller";
 import { ensureTokenExistsMiddleware } from "../../middlewares/ensureTokenExists.middleware";
 import { listUniqueUserController } from "../../controllers/users/listUniqueUser.controller";
+import { ensureUserExistsMiddleware } from "../../middlewares/ensureUserExists.middleware";
 
 export const userRoutes = express.Router();
 
@@ -22,7 +23,7 @@ userRoutes.post(
 	createUserController
 );
 userRoutes.get("", listUsersController);
-userRoutes.get("/:id", listUniqueUserController);
+userRoutes.get("/:id", ensureUserExistsMiddleware, listUniqueUserController);
 
 userRoutes.delete(
 	"",
