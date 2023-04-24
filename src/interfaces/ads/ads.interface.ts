@@ -57,9 +57,9 @@ export interface IAdsResponse {
 		main_image: string;
 		image_one: string;
 		image_two: string;
-		image_three?: string;
-		image_four?: string;
-		image_five?: string;
+		image_three?: string | null;
+		image_four?: string | null;
+		image_five?: string | null;
 		car_id: string;
 	};
 	user_id: string;
