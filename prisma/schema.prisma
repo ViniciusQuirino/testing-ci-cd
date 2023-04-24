@@ -53,7 +53,7 @@ model Car {
   id          String     @id @default(uuid())
   brand       String     @db.VarChar(60)
   model       String     @db.VarChar(60)
-  launch_year DateTime   @db.Date
+  launch_year Int     
   car_color   String     @db.VarChar(8)
   fuel_type   String     @db.VarChar(60)
   km          Float
