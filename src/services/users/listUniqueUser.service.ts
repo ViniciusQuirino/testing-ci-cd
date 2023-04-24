@@ -11,6 +11,12 @@ const listUniqueUserService = async (id: string) => {
 			cars: {
 				include: {
 					images: true,
+					user: {
+						select: {
+							name: true,
+							image_url: true,
+						},
+					},
 				},
 			},
 		},

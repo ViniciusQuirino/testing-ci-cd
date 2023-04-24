@@ -63,6 +63,10 @@ export interface IAdsResponse {
 		car_id: string;
 	};
 	user_id: string;
+	user: {
+		name: string;
+		image_url: string;
+	};
 }
 
 export interface IAdsQueries {
