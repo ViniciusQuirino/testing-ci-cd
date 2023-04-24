@@ -30,15 +30,13 @@ const sendPasswordResetEmail = async ({ to, subject, html }: ISendEmailRequest) 
 const resetPasswordTemplate = (
   userName: string,
   userEmail: string,
-  protocol: string,
-  host: string,
   resetToken: string
 ) => {
   const mailGenerator = new Mailgen({
     theme: "default",
     product: {
       name: "Motors shop",
-      link: "https://www.geeksforgeeks.org/",
+      link: "http://localhost:5173",
       logo: "https://cdn.discordapp.com/attachments/1092588708198350869/1099099499571454022/Logo.png",
       copyright: "© 2023 Motors shop. Todos os direitos reservados.",
     },
@@ -55,7 +53,7 @@ const resetPasswordTemplate = (
         button: {
           color: "#4529E6",
           text: "Redefina sua senha",
-          link: `http://localhost:5173/${resetToken}`,
+          link: `http://localhost:5173/recovery/${resetToken}`,
         },
       },
       outro:
