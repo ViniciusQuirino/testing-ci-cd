@@ -1,4 +1,4 @@
-import { IAddressCreateRequest } from "../adresses/address.interface";
+import { IAddressCreateRequest, IAddressUpdateRequest } from "../adresses/address.interface";
 import { IAdsResponse } from "../ads/ads.interface";
 
 export interface IUserLogin {
@@ -29,6 +29,7 @@ export interface IUserUpdateRequest {
 	birth_date?: Date;
 	image_url?: string;
 	is_seller?: boolean;
+	address?: IAddressUpdateRequest;
 }
 
 export interface IUserResponse {

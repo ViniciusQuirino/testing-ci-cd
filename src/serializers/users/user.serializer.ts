@@ -4,6 +4,7 @@ import {
 	IUserCompleteResponse,
 	IUserCreateRequest,
 	IUserResponse,
+	IUserUpdateRequest,
 	IUserWithAddressResponse,
 } from "../../interfaces/users/user.interface";
 import { adsResponseSerializer } from "../ads/ads.serializer";
@@ -37,6 +38,37 @@ export const userCreateRequestSerializer: SchemaOf<IUserCreateRequest> = yup.obj
 		state: yup.string().required(),
 	}),
 });
+
+export const userUpdateRequestSerializer: SchemaOf<IUserUpdateRequest> = yup.object().shape({
+	name: yup.string().notRequired(),
+	email: yup.string().email().notRequired(),
+	cpf: yup
+		.string()
+		.notRequired()
+		.matches(/^[0-9]+$/, "CPF possue apenas números")
+		.min(11, "CPF precisa ter 11 dígitos")
+		.max(11, "CPF precisa ter 11 dígitos"),
+	password: yup.string().notRequired(),
+	birth_date: yup.date().notRequired(),
+	phone_number: yup
+		.string()
+		.notRequired()
+		.matches(/^[0-9]+$/, "utilize apenas números")
+		.min(11, "O número precisa ter 11 dígitos")
+		.max(11, "O número precisa ter 11 dígitos"),
+	description: yup.string().notRequired(),
+	image_url: yup.string().notRequired(),
+	is_seller: yup.boolean().notRequired(),
+	address: yup.object().shape({
+		street: yup.string().notRequired(),
+		number: yup.string().notRequired(),
+		complement: yup.string().notRequired(),
+		zip_code: yup.string().notRequired(),
+		city: yup.string().notRequired(),
+		state: yup.string().notRequired(),
+	}),
+});
+
 export const userWithAddressResponseSerializer: SchemaOf<IUserWithAddressResponse> = yup
 	.object()
 	.shape({
