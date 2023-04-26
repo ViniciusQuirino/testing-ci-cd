@@ -41,11 +41,15 @@ userRoutes.patch(
 );
 
 userRoutes.delete(
-	"",
+	"/:id",
 	ensureAuthMiddleware,
 	ensureIsAdminOrAccountOwnerMiddleware,
 	deleteUserController
 );
 
 userRoutes.post("/resetpassword", ensureEmailMiddleware, sendEmailController);
-userRoutes.patch("/resetpassword/:token", ensureTokenExistsMiddleware, resetPasswordController);
+userRoutes.patch(
+	"/resetpassword/:token",
+	ensureTokenExistsMiddleware,
+	resetPasswordController
+);
