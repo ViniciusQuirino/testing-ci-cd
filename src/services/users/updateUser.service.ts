@@ -1,9 +1,12 @@
-import { add } from "lodash";
-import { IUserResponse, IUserUpdateRequest } from "../../interfaces/users/user.interface";
+import {
+	IUserUpdateRequest,
+	IUserWithAddressResponse,
+} from "../../interfaces/users/user.interface";
 import { prisma } from "../../prisma";
 import {
 	userCompleteResponseSerializer,
 	userResponseSerializer,
+	userWithAddressResponseSerializer,
 } from "../../serializers/users/user.serializer";
 
 export const updateUserService = async (
@@ -19,7 +22,7 @@ export const updateUserService = async (
 		name,
 		phone_number,
 	}: IUserUpdateRequest
-): Promise<IUserResponse> => {
+): Promise<IUserWithAddressResponse> => {
 	if (!address) {
 		const updatedUser = await prisma.user.update({
 			where: {
@@ -35,9 +38,12 @@ export const updateUserService = async (
 				is_seller,
 				phone_number,
 			},
+			include: {
+				address: true,
+			},
 		});
 
-		const validatedData = userResponseSerializer.validate(updatedUser, {
+		const validatedData = userWithAddressResponseSerializer.validate(updatedUser, {
 			stripUnknown: true,
 		});
 
@@ -79,9 +85,12 @@ export const updateUserService = async (
 		where: {
 			id: userId,
 		},
+		include: {
+			address: true,
+		},
 	});
 
-	const validatedData = userResponseSerializer.validate(updatedUser, {
+	const validatedData = userWithAddressResponseSerializer.validate(updatedUser, {
 		stripUnknown: true,
 	});
 
