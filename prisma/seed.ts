@@ -133,7 +133,7 @@ const carsFiat = [
 		launch_year: 2022,
 		price: 68267,
 		fuel_type: "Flex",
-		car_color: "Preto",
+		car_color: "Vermelho",
 		description: "Um carro compacto e ideal para cidade",
 		km: 10000,
 	},
