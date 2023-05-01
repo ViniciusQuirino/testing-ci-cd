@@ -12,6 +12,7 @@ import { updateAdsController } from "../../controllers/ads/updateAds.controller"
 import { ensureAdsQueryType } from "../../middlewares/ensureAdsQueryType.middleware";
 import { ensureAuthMiddleware } from "../../middlewares/ensureAuth.middleware";
 import { ensureIsOwnerOfAdsOrAdm } from "../../middlewares/ensureIsOwnerOfAdsOrAdm.middleware";
+import { listUniqueAdController } from "../../controllers/ads/listUniqueAd.controller";
 
 export const adsRoutes = express.Router();
 
@@ -29,6 +30,7 @@ adsRoutes.delete(
   deleteAdsController
 );
 adsRoutes.get("", ensureAdsQueryType, listAdsController);
+adsRoutes.get("/:id", listUniqueAdController);
 adsRoutes.patch(
   "/:id",
   ensureAuthMiddleware,
