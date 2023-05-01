@@ -1,7 +1,7 @@
 import { prisma } from "../../prisma";
 import { ICommentRequest } from "../../interfaces/comments/comments.interface";
 import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
+import { omit } from "lodash";
 
 export const createCommentsService = async (data: ICommentRequest, id: string, user_id: string) => {
 
@@ -20,7 +20,8 @@ export const createCommentsService = async (data: ICommentRequest, id: string, u
 
     const formattedComment = {
         ...newComment,
-        created_at: format(newComment.created_at, 'dd/MM/yyyy HH:mm:ss')
+        created_at: format(newComment.created_at, 'dd/MM/yyyy HH:mm:ss'),
+        user: omit(newComment.user, ["password", "cpf", "email", "phone_number", "description", "birth_date", "is_adm", "is_seller", "reset_token"])
     };
     
     if(!formattedComment){

@@ -6,8 +6,22 @@ export const listAdCommentService = async (id: string) => {
             car: { id: id } 
         },
         include: {
-            user: true,
-        },
+            user: {
+              select: {
+                id: true,
+                name: true,
+                cpf: false,
+                email: false,
+                phone_number: false,
+                description: false,
+                birth_date: false,
+                image_url: true,
+                is_adm: false,
+                is_seller: false,
+              },
+            }
+        }
     });
+
     return listComments;
 };
