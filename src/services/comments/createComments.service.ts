@@ -23,13 +23,6 @@ export const createCommentsService = async (data: ICommentRequest, id: string, u
         created_at: format(newComment.created_at, 'dd/MM/yyyy HH:mm:ss'),
         user: omit(newComment.user, ["password", "cpf", "email", "phone_number", "description", "birth_date", "is_adm", "is_seller", "reset_token"])
     };
-    
-    if(!formattedComment){
-        return {
-            statusCode: 400,
-            body: JSON.stringify({ message: 'Invalid comment data' }),
-          }; 
-    }
 
     return formattedComment;
 };
