@@ -45,9 +45,5 @@ export const createAdsService = async ({
 		images: newImages,
 	};
 
-	const validatedData = adsResponseSerializer.validate(result, {
-		stripUnknown: true,
-	});
-
-	return validatedData;
+	return result;
 };
