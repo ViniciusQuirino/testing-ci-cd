@@ -9,8 +9,7 @@ export const createCommentsService = async (data: ICommentRequest, id: string, u
         data: {
             car:  { connect: { id: id } },
             description,
-            user:  { connect: { id: user_id } },
-            created_at: new Date().toISOString()
+            user:  { connect: { id: user_id } }
         },
          include: {
              user: true,

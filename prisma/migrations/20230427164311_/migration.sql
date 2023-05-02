@@ -45,7 +45,7 @@ CREATE TABLE "Car" (
     "id" TEXT NOT NULL,
     "brand" VARCHAR(60) NOT NULL,
     "model" VARCHAR(60) NOT NULL,
-    "launch_year" DATE NOT NULL,
+    "launch_year" INTEGER NOT NULL,
     "car_color" VARCHAR(8) NOT NULL,
     "fuel_type" VARCHAR(60) NOT NULL,
     "km" DOUBLE PRECISION NOT NULL,
