@@ -2,7 +2,11 @@ import { Request, Response, NextFunction } from "express";
 import { AppError } from "../errors/appError";
 import { prisma } from "../prisma";
 
-export const ensureUserMatchesCommentOwner = async ( req: Request, res: Response, next: NextFunction ) => {
+export const ensureUserMatchesCommentOwner = async (
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
 	const user = req.user;
 	const id = req.params.id;
 
@@ -10,7 +14,7 @@ export const ensureUserMatchesCommentOwner = async ( req: Request, res: Response
 		return next();
 	}
 
-	if (req.originalUrl.includes('/comments/')) {
+	if (req.originalUrl.includes("/comments/")) {
 		const comment = await prisma.comments.findUnique({
 			where: {
 				id: req.params.id
