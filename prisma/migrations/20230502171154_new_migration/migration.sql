@@ -36,6 +36,7 @@ CREATE TABLE "Comments" (
     "description" VARCHAR(255) NOT NULL,
     "user_id" TEXT NOT NULL,
     "car_id" TEXT NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Comments_pkey" PRIMARY KEY ("id")
 );
@@ -83,12 +84,6 @@ CREATE UNIQUE INDEX "User_phone_number_key" ON "User"("phone_number");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Address_user_id_key" ON "Address"("user_id");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Comments_user_id_key" ON "Comments"("user_id");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Comments_car_id_key" ON "Comments"("car_id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Image_car_id_key" ON "Image"("car_id");
