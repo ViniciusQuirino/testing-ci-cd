@@ -1,4 +1,7 @@
-import { IAdsResponse, IAdsUpdateRequest } from "../../interfaces/ads/ads.interface";
+import {
+	IAdsResponse,
+	IAdsUpdateRequest,
+} from "../../interfaces/ads/ads.interface";
 import { prisma } from "../../prisma";
 import { adsResponseSerializer } from "../../serializers/ads/ads.serializer";
 
@@ -7,16 +10,17 @@ export const updateAdsService = async (
 		brand,
 		car_color,
 		description,
-
 		fuel_type,
 		images,
 		km,
 		launch_year,
 		model,
 		price,
+		is_active,
 	}: IAdsUpdateRequest,
 	adsId: string
 ) => {
+	console.log("teste");
 	const newAds = await prisma.car.update({
 		where: {
 			id: adsId,
@@ -26,12 +30,12 @@ export const updateAdsService = async (
 			brand,
 			car_color,
 			description,
-
 			fuel_type,
 			km,
 			launch_year,
 			model,
 			price,
+			is_active,
 		},
 		include: {
 			images: true,
@@ -61,7 +65,7 @@ export const updateAdsService = async (
 		},
 		include: {
 			images: true,
-			user:true
+			user: true,
 		},
 	});
 

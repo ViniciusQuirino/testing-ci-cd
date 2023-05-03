@@ -40,6 +40,7 @@ export interface IAdsUpdateRequest {
 		image_four?: string;
 		image_five?: string;
 	};
+	is_active: boolean;
 }
 
 export interface IAdsResponse {
