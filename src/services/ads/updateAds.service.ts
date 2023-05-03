@@ -61,6 +61,7 @@ export const updateAdsService = async (
 		},
 		include: {
 			images: true,
+			user:true
 		},
 	});
 
