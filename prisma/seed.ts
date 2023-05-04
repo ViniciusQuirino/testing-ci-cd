@@ -59,7 +59,7 @@ const users = [
 const address = {
 	street: "teste",
 	number: "12345",
-	zip_code: "123456",
+	zip_code: "12345678",
 	city: "teste",
 	state: "teste",
 };

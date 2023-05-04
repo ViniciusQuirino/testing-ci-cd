@@ -2,8 +2,8 @@ import express from "express";
 import { ensureDataIsValidMiddleware } from "../../middlewares/ensureDataIsValid.middleware";
 import { createAdsController } from "../../controllers/ads/createAds.controller";
 import {
-  adsCreateRequestSerializer,
-  adsUpdateRequestSerializer,
+	adsCreateRequestSerializer,
+	adsUpdateRequestSerializer,
 } from "../../serializers/ads/ads.serializer";
 import { deleteAdsController } from "../../controllers/ads/deleteAds.controller";
 import { listAdsController } from "../../controllers/ads/listAds.controller";
@@ -17,25 +17,25 @@ import { listUniqueAdController } from "../../controllers/ads/listUniqueAd.contr
 export const adsRoutes = express.Router();
 
 adsRoutes.post(
-  "",
-  ensureAuthMiddleware,
-  ensureDataIsValidMiddleware(adsCreateRequestSerializer),
-  createAdsController
+	"",
+	ensureAuthMiddleware,
+	ensureDataIsValidMiddleware(adsCreateRequestSerializer),
+	createAdsController
 );
 adsRoutes.delete(
-  "/:id",
-  ensureAuthMiddleware,
-  ensureAdsExistsMiddleware,
-  ensureIsOwnerOfAdsOrAdm,
-  deleteAdsController
+	"/:id",
+	ensureAuthMiddleware,
+	ensureAdsExistsMiddleware,
+	ensureIsOwnerOfAdsOrAdm,
+	deleteAdsController
 );
 adsRoutes.get("", ensureAdsQueryType, listAdsController);
-adsRoutes.get("/:id", listUniqueAdController);
+adsRoutes.get("/:id", ensureAdsExistsMiddleware, listUniqueAdController);
 adsRoutes.patch(
-  "/:id",
-  ensureAuthMiddleware,
-  ensureDataIsValidMiddleware(adsUpdateRequestSerializer),
-  ensureAdsExistsMiddleware,
-  ensureIsOwnerOfAdsOrAdm,
-  updateAdsController
+	"/:id",
+	ensureAuthMiddleware,
+	ensureDataIsValidMiddleware(adsUpdateRequestSerializer),
+	ensureAdsExistsMiddleware,
+	ensureIsOwnerOfAdsOrAdm,
+	updateAdsController
 );
