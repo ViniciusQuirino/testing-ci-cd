@@ -3,6 +3,10 @@ import { format } from "date-fns";
 
 export const listAdCommentService = async (id: string) => {
     const listComments = await prisma.comments.findMany({
+        orderBy:
+            {
+                created_at: "desc"
+            },
         where: { 
             car: { id: id } 
         },
