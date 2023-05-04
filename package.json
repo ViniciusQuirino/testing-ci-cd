@@ -33,6 +33,7 @@
 		"prisma-exclude": "^1.0.2",
 		"prisma-paginate": "^4.4.0",
 		"reflect-metadata": "^0.1.13",
+		"socket.io": "^4.6.1",
 		"yup": "0.32.11"
 	},
 	"devDependencies": {
