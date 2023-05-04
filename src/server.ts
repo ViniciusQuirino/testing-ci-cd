@@ -1,6 +1,8 @@
 import app from "./app";
 import "dotenv/config";
 
-app.listen(3333, () => {
-	console.log("Server running in port 3333");
+let port = process.env.PORT || 3333;
+
+app.listen(+port, "0.0.0.0", () => {
+  console.log("Server running in port 3333");
 });
