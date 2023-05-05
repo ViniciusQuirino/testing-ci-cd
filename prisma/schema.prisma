@@ -47,7 +47,7 @@ model Comments {
   user_id      String   @unique
   car          Car      @relation(fields: [car_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   car_id       String   @unique 
-  comment_date DateTime @db.Date
+  created_at   DateTime @db.Date
 }
 
 model Car {
