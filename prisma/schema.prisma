@@ -41,12 +41,13 @@ model Address {
 }
 
 model Comments {
-  id          String @id @default(uuid())
-  description String @db.VarChar(255)
-  user        User   @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  user_id     String @unique
-  car         Car    @relation(fields: [car_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  car_id      String @unique
+  id           String   @id @default(uuid())
+  description  String   @db.VarChar(255)
+  user         User     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user_id      String   @unique
+  car          Car      @relation(fields: [car_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  car_id       String   @unique 
+  comment_date DateTime @db.Date
 }
 
 model Car {
