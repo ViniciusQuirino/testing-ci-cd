@@ -1,6 +1,5 @@
 export interface ICommentRequest {
     description: string;
-    user_id: string;
 }
 
 export interface IComment {
