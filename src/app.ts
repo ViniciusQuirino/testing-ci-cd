@@ -18,7 +18,7 @@ app.use(cors());
 app.use("/session", sessionRoutes);
 app.use("/users", userRoutes);
 app.use("/ads", adsRoutes);
-app.use("/comments", commentsRoutes)
+app.use("/comments", commentsRoutes);
 app.use(handleErrorMiddleware);
 
 const server = http.createServer(app);
@@ -31,8 +31,12 @@ export const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-  socket.on("create_comment", (data) => {
-    io.emit("received_comments", data);
+  socket.on("join_room", (data) => {
+    socket.join(data);
+  })
+
+  socket.on("create_comment", ({ comments, id }) => {
+    io.to(id).emit("received_comments", comments);
   });
 });
 
