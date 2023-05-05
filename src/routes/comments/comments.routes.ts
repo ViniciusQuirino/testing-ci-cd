@@ -5,7 +5,7 @@ import { deleteCommentsController } from "../../controllers/comments/deleteComme
 import { updateCommentsController } from "../../controllers/comments/updateComments.controller";
 import { listAdCommentsController } from "../../controllers/comments/listComments.controller";
 import { ensureCommentExistsMiddleware } from "../../middlewares/ensureCommentExistsMiddleware";
-import { ensureUserMatchesCommentOwner } from "../../middlewares/ensureUsermatchesCommentOwner";
+import { ensureUserMatchesCommentOwner } from "../../middlewares/ensureUserMatchesCommentOwner";
 
 export const commentsRoutes = Router();
 
