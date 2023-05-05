@@ -112,6 +112,7 @@ export const listUniqueAdSerializer: SchemaOf<IUniqueAds> = yup.object().shape({
 		name: yup.string().required(),
 		image_url: yup.string().required(),
 		description: yup.string().required(),
+		phone_number: yup.number().required(),
 	}),
 	comments: yup.array(
 		yup.object().shape({
