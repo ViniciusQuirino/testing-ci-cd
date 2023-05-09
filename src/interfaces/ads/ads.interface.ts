@@ -92,13 +92,15 @@ export interface IUniqueAds {
 		image_three?: string | null;
 		image_four?: string | null;
 		image_five?: string | null;
-		car_id: string;
+		// car_id: string;
 	};
-	user_id: string;
+	// user_id: string;
 	user: {
+		id: string;
 		name: string;
 		image_url: string;
 		description: string;
+		phone_number: number;
 	};
 	comments: IComment[];
 }
