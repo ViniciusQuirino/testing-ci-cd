@@ -32,7 +32,17 @@ export const listAdsService = async (
 				...prisma.$exclude("car", ["user_id"]),
 				images: { select: prisma.$exclude("image", ["car_id"]) },
 				comments: { select: prisma.$exclude("comments", ["car_id"]) },
-				user: { select: prisma.$exclude("user", ["cpf", "password"]) },
+				user: {
+					select: prisma.$exclude("user", [
+						"cpf",
+						"password",
+						"email",
+						"birth_date",
+						"is_adm",
+						"is_seller",
+						"reset_token",
+					]),
+				},
 			},
 		},
 		{ limit: limit, page: page }
