@@ -6,6 +6,9 @@ export const updateCommentsService = async (id: string, data: any, user_id: stri
         where: { id },
         data: {
             ...data,
+        },
+        include: {
+            user: true
         }
     });
     const date = new Date();
