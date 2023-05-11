@@ -11,13 +11,17 @@ import {
 export const adsCreateRequestSerializer: SchemaOf<IAdsCreateRequest> = yup
 	.object()
 	.shape({
-		brand: yup.string().required(),
-		car_color: yup.string().required(),
-		fuel_type: yup.string().required(),
+		brand: yup.string().required()
+			.transform((value: string) => value.toUpperCase()),
+		car_color: yup.string().required()
+			.transform((value: string) => value.toUpperCase()),
+		fuel_type: yup.string().required()
+			.transform((value: string) => value.toUpperCase()),
 		description: yup.string().required(),
 		km: yup.number().required(),
 		launch_year: yup.number().required(),
-		model: yup.string().required(),
+		model: yup.string().required()
+			.transform((value: string) => value.toUpperCase()),
 		price: yup.number().required(),
 		images: yup.object().shape({
 			main_image: yup.string().required(),
