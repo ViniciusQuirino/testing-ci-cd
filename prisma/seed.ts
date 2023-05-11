@@ -7,7 +7,8 @@ const users = [
 		birth_date: "2001-10-10T00:00:00.000Z",
 		phone_number: "11234567888",
 		description: "teste",
-		image_url: "teste",
+		image_url:
+			"https://img.freepik.com/fotos-gratis/cliente-masculino-pensativo-olhando-para-longe_74855-3601.jpg",
 		is_seller: true,
 	},
 	{
@@ -18,7 +19,8 @@ const users = [
 		birth_date: "2001-10-10T00:00:00.000Z",
 		phone_number: "11234567111",
 		description: "teste",
-		image_url: "teste",
+		image_url:
+			"https://img.freepik.com/fotos-gratis/retrato-de-alegre-excitado-tablete-usuario-desgastar-oculos_1262-18272.jpg",
 		is_seller: true,
 	},
 	{
@@ -29,7 +31,8 @@ const users = [
 		birth_date: "2001-10-10T00:00:00.000Z",
 		phone_number: "11234567222",
 		description: "teste",
-		image_url: "teste",
+		image_url:
+			"https://img.freepik.com/fotos-premium/confiante-mantendo-as-maos-nos-quadris_1187-380172.jpg",
 		is_seller: true,
 	},
 	{
