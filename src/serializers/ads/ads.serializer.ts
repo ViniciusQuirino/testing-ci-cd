@@ -11,13 +11,17 @@ import {
 export const adsCreateRequestSerializer: SchemaOf<IAdsCreateRequest> = yup
 	.object()
 	.shape({
-		brand: yup.string().required(),
-		car_color: yup.string().required(),
-		fuel_type: yup.string().required(),
+		brand: yup.string().required()
+			.transform((value: string) => value.toUpperCase()),
+		car_color: yup.string().required()
+			.transform((value: string) => value.toUpperCase()),
+		fuel_type: yup.string().required()
+			.transform((value: string) => value.toUpperCase()),
 		description: yup.string().required(),
 		km: yup.number().required(),
 		launch_year: yup.number().required(),
-		model: yup.string().required(),
+		model: yup.string().required()
+			.transform((value: string) => value.toUpperCase()),
 		price: yup.number().required(),
 		images: yup.object().shape({
 			main_image: yup.string().required(),
@@ -80,6 +84,7 @@ export const adsResponseSerializer: SchemaOf<IAdsResponse> = yup
 		}),
 		user_id: yup.string().required(),
 		user: yup.object().shape({
+			id: yup.string().required(),
 			name: yup.string().required(),
 			image_url: yup.string().required(),
 		}),
@@ -105,20 +110,22 @@ export const listUniqueAdSerializer: SchemaOf<IUniqueAds> = yup.object().shape({
 		image_three: yup.string().nullable(),
 		image_four: yup.string().nullable(),
 		image_five: yup.string().nullable(),
-		car_id: yup.string().required(),
+		// car_id: yup.string().required(),
 	}),
-	user_id: yup.string().required(),
+	// user_id: yup.string().required(),
 	user: yup.object().shape({
+		id: yup.string().required(),
 		name: yup.string().required(),
 		image_url: yup.string().required(),
 		description: yup.string().required(),
+		phone_number: yup.number().required(),
 	}),
 	comments: yup.array(
 		yup.object().shape({
 			id: yup.string().required(),
 			description: yup.string().required(),
 			user_id: yup.string().required(),
-			car_id: yup.string().required(),
+			// car_id: yup.string().required(),
 			created_at: yup.date().required(),
 		})
 	),

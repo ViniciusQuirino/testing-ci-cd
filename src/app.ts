@@ -38,6 +38,14 @@ io.on("connection", (socket) => {
   socket.on("create_comment", ({ comments, id }) => {
     io.to(id).emit("received_comments", comments);
   });
+
+  socket.on("delete_comment", ({ comments, id }) => {
+    io.to(id).emit("comments_deleted", comments);
+  });
+
+  socket.on("update_comment", ({ comments, id }) => {
+    io.to(id).emit("comments_updated", comments);
+  });
 });
 
 export default server;

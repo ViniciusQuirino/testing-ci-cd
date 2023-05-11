@@ -1,32 +1,13 @@
 import { IAdsQueries } from "../../interfaces/ads/ads.interface";
 import { prisma } from "../../prisma";
 
-export const listAdsService = async (
-	queries: IAdsQueries,
-	outherQueries: IAdsQueries
-) => {
-	const {
-		min_km,
-		max_km,
-		min_price,
-		max_price,
-		limit = 12,
-		page = 1,
-	} = queries;
+export const listAdsByUserService = async (userId: string, queries: IAdsQueries) => {
+	const { page = 1, limit = 12 } = queries;
 
-	const model = outherQueries.model;
-
-	delete outherQueries.model;
-
-	const adsList = await prisma.car.paginate(
+	const userAdsList = await prisma.car.paginate(
 		{
 			where: {
-				AND: [
-					outherQueries,
-					{ model: { contains: model, mode: "insensitive" } },
-					{ km: { gte: min_km, lte: max_km } },
-					{ price: { gte: min_price, lte: max_price } },
-				],
+				user_id: userId,
 			},
 			select: {
 				...prisma.$exclude("car", ["user_id"]),
@@ -48,5 +29,5 @@ export const listAdsService = async (
 		{ limit: limit, page: page }
 	);
 
-	return adsList;
+	return userAdsList;
 };
