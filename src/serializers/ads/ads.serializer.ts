@@ -80,6 +80,7 @@ export const adsResponseSerializer: SchemaOf<IAdsResponse> = yup
 		}),
 		user_id: yup.string().required(),
 		user: yup.object().shape({
+			id: yup.string().required(),
 			name: yup.string().required(),
 			image_url: yup.string().required(),
 		}),

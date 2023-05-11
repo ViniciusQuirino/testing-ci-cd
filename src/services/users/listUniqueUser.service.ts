@@ -13,6 +13,7 @@ const listUniqueUserService = async (id: string) => {
 					images: true,
 					user: {
 						select: {
+							id: true,
 							name: true,
 							image_url: true,
 						},
